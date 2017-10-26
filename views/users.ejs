@@ -1,0 +1,12 @@
+<h1>All Users</h1>
+
+<% for (var i=0; i<users.length; i++) {%>
+  <li><%=users[i].username%></li>
+<%}%>
+
+<h2>Add a User</h2>
+
+<form action="/users" method="post">
+  <input type="text" name="username">
+  <input type="submit">
+</form>
