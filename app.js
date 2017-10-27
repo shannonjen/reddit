@@ -81,8 +81,13 @@ app.post('/users/:user_id/posts/:post_id/comments', function(req,res,next){
   .then(function(){
     res.redirect("/users/"+user_id);
   })
+})
 
-
+app.get('/posts', function(req,res,next){
+  knex('posts')
+  .then(function(posts){
+    res.render("posts", { posts})
+  })
 })
 
 app.listen(8000, function(){
