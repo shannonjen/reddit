@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <link rel="stylesheet" href="/style.css">
   <title>Document</title>
 </head>
+
 <body>
-  <h1>All Users</h1>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Reddit</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/users">All Users</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <ul>
-  <% for (var i=0; i<users.length; i++) {%>
-    <li><a href="/users/<%=users[i].id%>"><%=users[i].username%></a></li>
-  <%}%>
-  </ul>
 
 
-  <h2>Add a User</h2>
+  <div class="container">
+    <h1>All Users</h1>
 
-  <form action="/users" method="post">
-    <input type="text" name="username">
-    <input type="submit">
-  </form>
+    <ul>
+      <% for (var i=0; i<users.length; i++) {%>
+        <li>
+          <a href="/users/<%=users[i].id%>">
+            <%=users[i].username%>
+          </a>
+        </li>
+        <%}%>
+    </ul>
+
+
+    <h2>Add a User</h2>
+
+    <form action="/users" method="post">
+      <input type="text" name="username">
+      <input type="submit">
+    </form>
+  </div>
 </body>
+
 </html>
