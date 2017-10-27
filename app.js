@@ -63,6 +63,11 @@ app.post('/users/:id', function(req,res,next){
   })
 })
 
+//Create a new post
+app.post('users/:user_id/posts/:posts_id/comments', function(req,res,next){
+
+})
+
 app.listen(8000, function(){
   console.log('You are listening to port 8000...')
 })
