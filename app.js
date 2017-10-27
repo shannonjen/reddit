@@ -43,7 +43,11 @@ app.get('/users/:id', function(req,res,next){
     knex('posts')
     .where('user_id', id)
     .then(function(posts){
-      res.render('user', {user, posts})
+      knex('comments')
+      .then(function(comments){
+        res.render('user', {user, posts, comments})
+      })
+
     })
 
   })
@@ -63,8 +67,21 @@ app.post('/users/:id', function(req,res,next){
   })
 })
 
-//Create a new post
-app.post('users/:user_id/posts/:posts_id/comments', function(req,res,next){
+//Create a new comment
+app.post('/users/:user_id/posts/:post_id/comments', function(req,res,next){
+  const user_id = req.params.user_id;
+  const post_id = req.params.post_id;
+  const { comment } = req.body;
+  knex('comments')
+  .insert({
+    user_id: user_id,
+    post_id: post_id,
+    comment: comment
+  })
+  .then(function(){
+    res.redirect("/users/"+user_id);
+  })
+
 
 })
 
